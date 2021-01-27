@@ -1,7 +1,7 @@
 // External Modules
 import { Domain } from '@chris-talman/request';
 
-declare module '@chris-talman/gocardless'
+declare module '@chris-talman/cloudflare'
 {
 	// Client
 	export class Client
