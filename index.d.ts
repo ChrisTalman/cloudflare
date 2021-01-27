@@ -23,6 +23,7 @@ declare module '@chris-talman/cloudflare'
 	export class DnsRecords extends Resource
 	{
 		public browse(parameters: DnsRecordsBrowseParameters): Promise <DnsRecordsBrowseResult>;
+		public create(parameters: DnsRecordsCreateParameters): Promise <DnsRecordsCreateResult>;
 		public delete(parameters: {zoneId: string, recordId: string}): Promise <void>;
 	}
 	// DNS Records: Browse
@@ -38,6 +39,29 @@ declare module '@chris-talman/cloudflare'
 	interface DnsRecordsBrowseResult
 	{
 		result: Array <DnsRecord>;
+	}
+	// DNS Records: Create
+	export interface DnsRecordsCreateParameters
+	{
+		zoneId: string;
+		record?: DnsRecordsCreateParametersRecord;
+	}
+	export interface DnsRecordsCreateParametersRecord
+	{
+		type: string;
+		name: string;
+		content: string;
+		ttl: number;
+		priority?: number;
+		proxied?: boolean;
+	}
+	interface DnsRecordsBrowseResult
+	{
+		result: Array <DnsRecord>;
+	}
+	interface DnsRecordsCreateResult
+	{
+		result: DnsRecord;
 	}
 	// DNS Record
 	interface DnsRecord
